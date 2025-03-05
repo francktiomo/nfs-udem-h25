@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu du Toqué!</title>
+</head>
+
+<style>
+
+    /* les styles de départ. SVP ne pas  modifier. */
+    @import "style-general.css";
+
+    /* definir ces styles. Ne pas oublier que les  styles s'additionnent. */
+
+    /* style  pour Mobile (plus  petit  écran) */
+    @import "style-small.css";
+
+    /* style pour écran moyen. S'ajoute a style-small */
+    @import "style-medium.css" screen and (min-width: 800px);
+
+    /* style pour grand écran. S'ajoute a style-small et style-medium */
+    @import "style-large.css" screen and (min-width: 1200px);
+
+
+</style>
+
+<body>
+    <main>
+        <section id="section-titre">
+            <img class="logo" src="img/logo.svg" alt="Toqué!"/>
+        </section>
+
+        <section id="section-entree">
+            <h2>Entrées</h2>
+            <div class="image"><img src="img/toque-entree.jpg" alt="entrée" /></div>
+            <ul>
+
+              <li class="plat">
+					<h3>Soupe de topinambour</h3>
+					<p class="prix">28</p>
+					<p class="desc">sabayon à la noisette, choux de Bruxelles,  pomme de pin</p>
+              </li>
+              <li class="plat">
+					<h3>Flétan mariné</h3>
+					<p class="prix">34</p>
+					<p class="desc">jus de pomme et mélilot, airelles, pacanes, mousse au sapin, crème fraîche</p>
+              </li>
+
+              <li class="plat">
+                  <h3>Terrine de foie gras</h3>
+                  <p class="prix">37</p>
+                  <p class="desc">purée de betterave, huile de sapin, betterave confite, noisettes, brioche</p>
+              </li>
+
+              <li class="plat">
+                  <h3>Royale au persil et bourgots</h3>
+                  <p class="prix">31</p>
+                  <p class="desc">shimejis, boutons de marguerite, togarashi, fenouil, émulsion au yuzu</p>
+              </li>
+              <li class="plat">
+                  <h3>Truite confite</h3>
+                  <p class="prix">32</p>
+                  <p class="desc">huile d’ail vert, algues confites, œufs de truite, sauce vin blanc</p>
+              </li>
+            </ul>
+        </section>
+
+
+        <section id="section-principal">
+            <h2>Plats principaux</h2>
+            <div class="image"><img src="img/toque-principal.jpg" alt="principal" /></div>
+            <ul>
+				<li class="plat">
+					<h3>Agneau selon la coupe</h3>
+					<p class="prix">66</p>
+					<p class="desc">endives braisées, chimichurri, purée de datte, daikon, sauce poivrade</p>
+				</li>
+				<li class="plat">
+					<h3>Doré</h3>
+					<p class="prix">62</p>
+					<p class="desc">carottes confites, céleri rave, choucroute, noix de pin, sauce au curcuma</p>
+				</li>
+				<li class="plat">
+					<h3>Filet de boeuf</h3>
+					<p class="prix">69</p>
+					<p class="desc">rutabaga, purée de canneberge, pleurotes érigés, purée de citron confit, sauce au vin rouge</p>
+				</li>
+				<li class="plat">
+					<h3>Magret de canard et foie gras</h3>
+					<p class="prix">64</p>
+					<p class="desc">piperade, pomme de terre confite, purée d’ail rôti, poudre d’olive, sauce au vermouth</p>
+				</li>
+				<li class="plat">
+					<h3>Cavatelli au lapin</h3>
+					<p class="prix">58</p>
+					<p class="desc">purée de roquette, champignons, carotte confite, praliné aux graines de citrouille, sauce à la moutarde</p>
+				</li>
+            </ul>
+        </section>
+
+
+
+        <section id="section-dessert">
+            <h2>Desserts</h2>
+            <div class="image"><img src="img/toque-dessert.jpg" alt="dessert" /></div>
+            <ul>
+                <li class="plat">
+                    <h3>Mousse au chocolat Manjari</h3>
+                    <p class="prix">18</p>
+                    <p class="desc">meringue à la baie de genièvre, gel de gin et lime, ganache au chocolat blanc Opalys, yogourt glacé à l’argousier</p>
+                </li>
+                <li class="plat">
+                    <h3>Gâteau aux carottes</h3>
+                    <p class="prix">18</p>
+                    <p class="desc">bavarois au fromage à la crème, croustille et gel de carotte, meringue au citron, ganache au chocolat Opalys, crème glacée au rhum</p>
+                </li>
+                <li class="plat">
+                    <h3>Crémeux au jasmin</h3>
+                    <p class="prix">18</p>
+                    <p class="desc">fraises compressées, croustade à la pâte sucrée, gel au miel, amandes, gâteau chiffon à la cassonnade, crème glacée aux amandes</p>
+                </li>
+                <li class="plat">
+                    <h3>Gâteau éponge au beurre noisette</h3>
+                    <p class="prix">18</p>
+                    <p class="desc">brunoise et gel de pomme, ganache montée et crème glacée à la brioche</p>
+                </li>
+                <li class="plat">
+                    <h3>Salade de fraises</h3>
+                    <p class="prix">14</p>
+                    <p class="desc">sirop de jasmin, gel au gin et à la lime, crème glacée à la menthe</p>
+                </li>
+            </ul>
+        </section>
+
+
+        <section id="section-joindre">
+            <h2>Nous  joindre</h2>
+            <div class="contact">
+                <p>
+                514 499-2084<br/>
+                info@restaurant-toque.com
+                </p>
+
+                <p>
+                900, place Jean-Paul-Riopelle<br/>
+                Montréal, Québec</br>
+                H2Z 2B2
+                </p>
+
+                <p>
+                <a href="https://www.restaurant-toque.com/fr">https://www.restaurant-toque.com</a>
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

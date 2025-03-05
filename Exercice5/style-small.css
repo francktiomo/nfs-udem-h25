@@ -1,0 +1,46 @@
+
+/* SMALL  (mobile) */
+/* ces regles s'appliquent TOUJOURS */
+/* et s'appliquent aussi pour les ecrans MEDIUM et LARGE */
+
+/* pour visualiser... */
+
+.logo  { background-color: #fcc;  }
+
+section h2 {
+	padding: 0.5rem;
+}
+
+section ul {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	padding: 0.5rem;
+	list-style: none;
+}
+
+.plat {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
+	grid-template-areas: 
+		"titre  prix"
+		"description ."
+		;		
+}
+
+li h3 {
+	grid-area: titre;
+	margin-left: 0;
+}
+
+.prix {
+	grid-area: prix;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.desc {
+	grid-area: description;
+}

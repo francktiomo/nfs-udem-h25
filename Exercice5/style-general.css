@@ -1,0 +1,36 @@
+ /* Général */
+* { padding:0;  margin:0; }
+
+/* choix de police */
+section { font-family: sans-serif; }
+
+
+/* Pour voir les sections, avec un peu d'espace */
+section { padding:5px;border:2px solid #bbb; }
+.contact p { padding: 10px; }
+
+/* Logo Toqué */
+.logo {
+    width:100%;
+    height: 200px;
+}
+
+/* couleurs de fond */
+#section-joindre .contact, section ul, .logo  { background-color: #fed; }
+
+/* les  titres  de  section sont  en  gris */
+section h2 { background-color:#ddd; }
+
+
+/* pour des images de hauteur fixe */
+.image { height: 300px; }
+.image { position:relative;overflow:hidden;}
+.image img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50%;
+}
+
