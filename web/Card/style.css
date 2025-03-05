@@ -1,0 +1,67 @@
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.container {
+  padding: 0.5rem 1rem 0;
+  border: 2px solid black;
+  display: grid;
+  height: 390px;
+  width: 595px;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 20% 30% 45%;
+  /*Expérimentez avec les valeurs: 
+    - flex-start
+    - flex-end
+    - center
+    - space-between
+    - space-around
+    - space-evenly*/
+  grid-template-areas: 
+    "empty     logo"
+    "dept-name dept-name"
+    "address   contact"
+  ;
+  margin: 0 auto;
+  
+}
+
+.empty {
+  grid-area: empty;
+}
+
+.logo {
+  grid-area: logo;
+  height: 5rem;
+  width: 12rem;
+}
+
+.dept-name {
+  grid-area: dept-name;
+  display: flex;
+  /* align-self: end; */
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+.department {
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.address {
+  grid-area: address;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.contact {
+  grid-area: contact;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
