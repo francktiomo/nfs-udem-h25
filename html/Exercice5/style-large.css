@@ -6,4 +6,59 @@
 /* pour visualiser... */
 .logo  { background-color: #ccf;  }
 
+main {
+  /* margin: 1rem; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, fit-content);
+  grid-template-areas: 
+    "titre titre titre"
+    "entree principal dessert"
+    "contact contact contact";
+}
 
+#section-titre {
+  grid-area: titre;
+}
+
+#section-entree {
+  grid-area: entree;
+}
+
+#section-principal {
+  grid-area: principal;
+}
+
+#section-dessert {
+  grid-area: dessert;
+}
+
+#section-joindre {
+  grid-area: contact;
+}
+
+section ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex-wrap: wrap;
+  list-style: none;
+  /* width: fit-content; */
+  height: 54.5%;
+}
+
+.plat {
+  width: 100%;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: fit-content;
+}
+
+.contact p {
+  width: fit-content;
+  align-self: flex-start;
+}
