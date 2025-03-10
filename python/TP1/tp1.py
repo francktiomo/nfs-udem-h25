@@ -28,9 +28,9 @@ VIGENERE = {
 }
 
 # Affichage table Vigenère sous forme d'un tableau
-print(' ', ' '.join(VIGENERE['A']))
-for k, v in VIGENERE.items():
-	print(k, ' '.join(list(VIGENERE[k].values())))
+# print(' ', ' '.join(VIGENERE['A']))
+# for k, v in VIGENERE.items():
+# 	print(k, ' '.join(list(VIGENERE[k].values())))
 
 ########################### Message et clef ##################################
 MESSAGE = "La vie est belle"
@@ -39,11 +39,40 @@ CLEF = "secret"
 
 ################################# Cesar #####################################
 def cryptCesar(message, clef):
-	pass
+	messageCrypt = ''
+	for lettre in message:
+		if lettre == ' ':
+			messageCrypt += lettre
+			continue
+		unicodeLettre = ord(lettre)
+		unicodeLettreCrypt = unicodeLettre + clef
+		if lettre.isupper() and unicodeLettreCrypt > 90: # MAJ
+			unicodeLettreCrypt -= 26
+		elif lettre.islower() and unicodeLettreCrypt > 122: # MIN
+			unicodeLettreCrypt -= 26
+		lettreCrypt = chr(unicodeLettreCrypt)
+		messageCrypt += lettreCrypt
+	return messageCrypt
+
+print(cryptCesar(MESSAGE, CLEFCESAR))
 
 def decryptCesar(message, clef):
-	pass
+	messageDecrypt = ''
+	for lettre in message:
+		if lettre == ' ':
+			messageDecrypt += lettre
+			continue
+		unicodeLettre = ord(lettre)
+		unicodeLettreDecrypt = unicodeLettre - clef
+		if lettre.isupper() and unicodeLettreDecrypt < 65: # MAJ
+			unicodeLettreDecrypt += 26
+		elif lettre.islower() and unicodeLettreDecrypt < 97: # MIN
+			unicodeLettreDecrypt += 26
+		lettreCrypt = chr(unicodeLettreDecrypt)
+		messageDecrypt += lettreCrypt
+	return messageDecrypt
 
+print(decryptCesar('Qf anj jxy gjqqj', CLEFCESAR))
 
 ############################### Vigenère #####################################
 def cryptVigenere(message, clef):
