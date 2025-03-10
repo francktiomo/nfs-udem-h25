@@ -93,7 +93,22 @@ print(f'Message décrypté: {decryptCesar(cryptMsg, 50)}')
 
 ############################### Vigenère #####################################
 def cryptVigenere(message, clef):
-	pass
+	clefIndex = 0
+	clefLen = len(clef)
+	encryptedMessage = ''
+
+	for letter in message:
+		clefLetter = clef[clefIndex]
+		if (clefIndex < clefLen - 1):
+			clefIndex += 1
+		else:
+			clefIndex = 0 # reset the index to start from the first letter of the clef
+		
+		encryptedLetter = VIGENERE[letter][clefLetter]
+		encryptedMessage += encryptedLetter
+	
+	return encryptedLetter
+
 
 def decryptVigenere(message, clef):
 	pass
