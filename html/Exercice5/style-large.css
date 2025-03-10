@@ -10,7 +10,7 @@ main {
   /* margin: 1rem; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, fit-content);
+  grid-template-rows: repeat(3, auto);
   grid-template-areas: 
     "titre titre titre"
     "entree principal dessert"
@@ -37,28 +37,28 @@ main {
   grid-area: contact;
 }
 
+#section-entree, #section-principal, #section-dessert {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 section ul {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 2rem;
   flex-wrap: wrap;
   list-style: none;
-  /* width: fit-content; */
-  height: 54.5%;
+  width: auto;
+  flex-grow: 1;
 }
 
 .plat {
   width: 100%;
+  margin-bottom: 0;
 }
 
 .contact {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  height: fit-content;
-}
-
-.contact p {
-  width: fit-content;
-  align-self: flex-start;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
