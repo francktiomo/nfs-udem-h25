@@ -39,13 +39,19 @@ CLEF = "secret"
 
 ################################# Cesar #####################################
 def cryptCesar(message, clef):
+	"""Crypte un message et retourne le message crypté 
+	
+	Params:
+	message -- Message en clair à crypter 
+	clef -- clé de Cesar à utiliser pour crypter
+	"""
 	messageCrypt = ''
 	for lettre in message:
-		if lettre == ' ':
-			messageCrypt += lettre
-			continue
 		unicodeLettre = ord(lettre)
-		unicodeLettreCrypt = unicodeLettre + clef
+		if not lettre.isalpha() or unicodeLettre < 65 or unicodeLettre > 122: # Vérifier si le caractère et une lettre de l'aphabet (et pas une ponctuation par exemple)
+			messageCrypt += lettre # Ne pas crypter le caractère dans ce cas
+			continue
+		unicodeLettreCrypt = unicodeLettre + clef%26
 		if lettre.isupper() and unicodeLettreCrypt > 90: # MAJ
 			unicodeLettreCrypt -= 26
 		elif lettre.islower() and unicodeLettreCrypt > 122: # MIN
@@ -54,16 +60,23 @@ def cryptCesar(message, clef):
 		messageCrypt += lettreCrypt
 	return messageCrypt
 
-print(cryptCesar(MESSAGE, CLEFCESAR))
+cryptMsg = cryptCesar('Va là-bas', 50)
+print(f'Message crypté: {cryptMsg}')
 
 def decryptCesar(message, clef):
+	"""Décrypte un message et retourne le message en clair
+
+	Params:
+	message -- Message à crypter
+	clef -- clé de Cesar à utiliser pour décrypter
+	"""
 	messageDecrypt = ''
 	for lettre in message:
-		if lettre == ' ':
-			messageDecrypt += lettre
-			continue
 		unicodeLettre = ord(lettre)
-		unicodeLettreDecrypt = unicodeLettre - clef
+		if not lettre.isalpha() or unicodeLettre < 65 or unicodeLettre > 122: # Vérifier si le caractère et une lettre de l'aphabet (et pas une ponctuation par exemple)
+			messageDecrypt += lettre # Ne pas decrypter le caractère dans ce cas
+			continue
+		unicodeLettreDecrypt = unicodeLettre - clef%26
 		if lettre.isupper() and unicodeLettreDecrypt < 65: # MAJ
 			unicodeLettreDecrypt += 26
 		elif lettre.islower() and unicodeLettreDecrypt < 97: # MIN
@@ -72,7 +85,11 @@ def decryptCesar(message, clef):
 		messageDecrypt += lettreCrypt
 	return messageDecrypt
 
-print(decryptCesar('Qf anj jxy gjqqj', CLEFCESAR))
+print(f'Message décrypté: {decryptCesar(cryptMsg, 50)}')
+
+
+# QUESTIONS
+# 1. Prendre en compte les lettres avec ponctuation (à, è, etc) ?
 
 ############################### Vigenère #####################################
 def cryptVigenere(message, clef):
