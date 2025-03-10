@@ -27,94 +27,54 @@ VIGENERE = {
     'Z': {'A': 'Z', 'B': 'A', 'C': 'B', 'D': 'C', 'E': 'D', 'F': 'E', 'G': 'F', 'H': 'G', 'I': 'H', 'J': 'I', 'K': 'J', 'L': 'K', 'M': 'L', 'N': 'M', 'O': 'N', 'P': 'O', 'Q': 'P', 'R': 'Q', 'S': 'R', 'T': 'S', 'U': 'T', 'V': 'U', 'W': 'V', 'X': 'W', 'Y': 'X', 'Z': 'Y'}
 }
 
-# Affichage table Vigenère sous forme d'un tableau
-# print(' ', ' '.join(VIGENERE['A']))
-# for k, v in VIGENERE.items():
-# 	print(k, ' '.join(list(VIGENERE[k].values())))
-
-########################### Message et clef ##################################
 MESSAGE = "La vie est belle"
 CLEFCESAR = 5
 CLEF = "secret"
 
-################################# Cesar #####################################
-def cryptCesar(message, clef):
-	"""Crypte un message et retourne le message crypté 
+
+def cryptVigenere(message, clef):
+	'''
+	Chiffre un message avec la methode de Vigenere et le retourne
 	
-	Params:
-	message -- Message en clair à crypter 
-	clef -- clé de Cesar à utiliser pour crypter
-	"""
-	messageCrypt = ''
-	for lettre in message:
-		unicodeLettre = ord(lettre)
-		if not lettre.isalpha() or unicodeLettre < 65 or unicodeLettre > 122: # Vérifier si le caractère et une lettre de l'aphabet (et pas une ponctuation par exemple)
-			messageCrypt += lettre # Ne pas crypter le caractère dans ce cas
+	:param message: str
+	:param clef: str
+  :return: str
+  '''
+	clef = clef.upper()
+	clefIndex = 0
+	clefLen = len(clef)
+
+	encryptedMessage = ''
+
+	for letter in message:
+		clefLetter = clef[clefIndex]
+		# Recommencer au debut de la cle
+		clefIndex = clefIndex + 1 if clefIndex < clefLen - 1 else 0
+		
+		if not letter.isalpha():
+			encryptedMessage += letter # Ne pas encrypter les caracteres non alphabetiques
 			continue
-		unicodeLettreCrypt = unicodeLettre + clef%26
-		if lettre.isupper() and unicodeLettreCrypt > 90: # MAJ
-			unicodeLettreCrypt -= 26
-		elif lettre.islower() and unicodeLettreCrypt > 122: # MIN
-			unicodeLettreCrypt -= 26
-		lettreCrypt = chr(unicodeLettreCrypt)
-		messageCrypt += lettreCrypt
-	return messageCrypt
+		encryptedLetter = VIGENERE[letter.upper()][clefLetter]
+		encryptedMessage += encryptedLetter if letter.isupper() else encryptedLetter.lower() 
 
-# cryptMsg = cryptCesar('Va là-bas', 50)
-# print(f'Message crypté: {cryptMsg}')
+	return encryptedMessage
 
-def decryptCesar(message, clef):
-	"""Décrypte un message et retourne le message en clair
+print(f"Message encrypte avec vigenere: {cryptVigenere(MESSAGE, CLEF)}")
 
-	Params:
-	message -- Message à crypter
-	clef -- clé de Cesar à utiliser pour décrypter
-	"""
-	messageDecrypt = ''
-	for lettre in message:
-		unicodeLettre = ord(lettre)
-		if not lettre.isalpha() or unicodeLettre < 65 or unicodeLettre > 122: # Vérifier si le caractère et une lettre de l'aphabet (et pas une ponctuation par exemple)
-			messageDecrypt += lettre # Ne pas decrypter le caractère dans ce cas
-			continue
-		unicodeLettreDecrypt = unicodeLettre - clef%26
-		if lettre.isupper() and unicodeLettreDecrypt < 65: # MAJ
-			unicodeLettreDecrypt += 26
-		elif lettre.islower() and unicodeLettreDecrypt < 97: # MIN
-			unicodeLettreDecrypt += 26
-		lettreCrypt = chr(unicodeLettreDecrypt)
-		messageDecrypt += lettreCrypt
-	return messageDecrypt
+def testCryptVigenere():
+	assert cryptVigenere('La vie est belle', 'secret') == 'De mmx iuk uwpnv'
 
-# print(f'Message décrypté: {decryptCesar(cryptMsg, 50)}')
-
-
-# QUESTIONS
-# 1. Prendre en compte les lettres avec ponctuation (à, è, etc) ?
-
-
-################################# XOR ########################################
-def getBinaire(char):
+def decryptVigenere(message, clef):
+	'''
+	Dechiffre un message avec la methode de Vigenere et le retourne
+	
+	:param message: str
+	:param clef: str
+  :return: str
+  '''
 	pass
 
-def opXor(char1, char2):
-	pass
+def testDecryptVigenere():
+  assert decryptVigenere('De mmx iuk uwpnv') == 'La vie est belle'
 
-def cryptXor(message, clef):
-	pass
-
-def decryptXor(message, clef):
-	pass
-
-def cryptCesar(message, clef):
-	pass
-
-def decryptCesar(message, clef):
-	pass
-
-
-############################# Tortue XOR #####################################
-def cryptCesar(message, clef):
-	pass
-
-def decryptCesar(message, clef):
-	pass
+# testCryptVigenere()
