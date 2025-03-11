@@ -38,19 +38,17 @@ def cryptVigenere(message, clef):
 	
 	:param message: str
 	:param clef: str
-  :return: str
-  '''
-	clef = clef.upper()
+	:return: str
+	'''
 	clefIndex = 0
+	clef = clef.upper()
 	clefLen = len(clef)
 
 	encryptedMessage = ''
 
 	for letter in message:
 		clefLetter = clef[clefIndex]
-		# Recommencer au debut de la cle
-		clefIndex = clefIndex + 1 if clefIndex < clefLen - 1 else 0
-		
+		clefIndex = clefIndex + 1 if clefIndex < clefLen - 1 else 0 # Recommencer au début de la clé
 		if not letter.isalpha():
 			encryptedMessage += letter # Ne pas encrypter les caracteres non alphabetiques
 			continue
@@ -59,10 +57,12 @@ def cryptVigenere(message, clef):
 
 	return encryptedMessage
 
-print(f"Message encrypte avec vigenere: {cryptVigenere(MESSAGE, CLEF)}")
+print(f"Message encrypte avec vigenere: {cryptVigenere('attackatdawn', 'LEMONLEMONLE')}")
 
 def testCryptVigenere():
 	assert cryptVigenere('La vie est belle', 'secret') == 'De mmx iuk uwpnv'
+	assert cryptVigenere('attackatdawn', 'LEMONLEMONLE') == 'lxfopvefrnhr'
+
 
 def decryptVigenere(message, clef):
 	'''
@@ -70,11 +70,36 @@ def decryptVigenere(message, clef):
 	
 	:param message: str
 	:param clef: str
-  :return: str
-  '''
-	pass
+	:return: str
+	'''
+	clefIndex = 0
+	clef = clef.upper()
+	clefLen = len(clef)
+
+	decryptedMessage = ''
+
+	for letter in message:
+		clefLetter = clef[clefIndex]
+		clefIndex = clefIndex + 1 if clefIndex < clefLen - 1 else 0
+		if not letter.isalpha():
+			decryptedMessage += letter
+			continue
+		row = VIGENERE[clefLetter]
+		decryptedLetter = ''
+		for key, value in row.items():
+			if value == letter.upper():
+				decryptedLetter = key
+				break
+		decryptedMessage += decryptedLetter if letter.isupper() else decryptedLetter.lower()
+	return decryptedMessage
+
+print(f"Message decrypte avec Vigenere: {decryptVigenere('De mmx iuk uwpnv', CLEF)}")
+print(f"Message decrypte avec Vigenere: {decryptVigenere('lxfopvefrnhr', 'LEMONLEMONLE')}")
 
 def testDecryptVigenere():
-  assert decryptVigenere('De mmx iuk uwpnv') == 'La vie est belle'
+	assert decryptVigenere('De mmx iuk uwpnv', 'secret') == 'La vie est belle'
+	assert decryptVigenere('lxfopvefrnhr', 'LEMONLEMONLE') == 'attackatdawn'
+		
 
-# testCryptVigenere()
+testCryptVigenere()
+testDecryptVigenere()
