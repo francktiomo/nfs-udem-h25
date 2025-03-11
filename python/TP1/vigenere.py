@@ -94,10 +94,12 @@ def decryptVigenere(message, clef):
 def testCryptVigenere():
 	assert cryptVigenere('La vie est belle', 'secret') == 'De mmx iuk uwpnv'
 	assert cryptVigenere('attackatdawn', 'LEMONLEMONLE') == 'lxfopvefrnhr'
+	assert(cryptVigenere('LECI', 'ABRI') == 'LFTQ')
 
 def testDecryptVigenere():
 	assert decryptVigenere('De mmx iuk uwpnv', 'secret') == 'La vie est belle'
 	assert decryptVigenere('lxfopvefrnhr', 'LEMONLEMONLE') == 'attackatdawn'
+	assert(decryptVigenere('LFTQ', 'ABRI') == 'LECI')
 		
 testCryptVigenere()
 testDecryptVigenere()
