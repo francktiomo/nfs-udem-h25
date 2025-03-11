@@ -62,13 +62,6 @@ def cryptVigenere(message, clef):
 
 	return encryptedMessage
 
-print(f"Message encrypte avec vigenere: {cryptVigenere('attackatdawn', 'LEMONLEMONLE')}")
-
-def testCryptVigenere():
-	assert cryptVigenere('La vie est belle', 'secret') == 'De mmx iuk uwpnv'
-	assert cryptVigenere('attackatdawn', 'LEMONLEMONLE') == 'lxfopvefrnhr'
-
-
 def decryptVigenere(message, clef):
 	'''
 	Dechiffre un message avec la methode de Vigenere
@@ -98,13 +91,13 @@ def decryptVigenere(message, clef):
 		decryptedMessage += decryptedLetter if letter.isupper() else decryptedLetter.lower()
 	return decryptedMessage
 
-print(f"Message decrypte avec Vigenere: {decryptVigenere('De mmx iuk uwpnv', CLEF)}")
-print(f"Message decrypte avec Vigenere: {decryptVigenere('lxfopvefrnhr', 'LEMONLEMONLE')}")
+def testCryptVigenere():
+	assert cryptVigenere('La vie est belle', 'secret') == 'De mmx iuk uwpnv'
+	assert cryptVigenere('attackatdawn', 'LEMONLEMONLE') == 'lxfopvefrnhr'
 
 def testDecryptVigenere():
 	assert decryptVigenere('De mmx iuk uwpnv', 'secret') == 'La vie est belle'
 	assert decryptVigenere('lxfopvefrnhr', 'LEMONLEMONLE') == 'attackatdawn'
 		
-
 testCryptVigenere()
 testDecryptVigenere()
