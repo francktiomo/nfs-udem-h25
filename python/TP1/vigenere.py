@@ -39,11 +39,11 @@ CLEF = "secret"
 
 def cryptVigenere(message, clef):
 	'''
-	Chiffre un message avec la methode de Vigenere et le retourne
+	Chiffre un message avec la methode de Vigenere
 	
-	:param message: str
-	:param clef: str
-	:return: str
+	:param message: Message à encrypter
+	:param clef: Clé de Vigenere
+	:return: Message encrypté
 	'''
 	clefIndex = 0
 	clef = clef.upper()
@@ -71,11 +71,11 @@ def testCryptVigenere():
 
 def decryptVigenere(message, clef):
 	'''
-	Dechiffre un message avec la methode de Vigenere et le retourne
+	Dechiffre un message avec la methode de Vigenere
 	
-	:param message: str
-	:param clef: str
-	:return: str
+	:param message: Message à décrypter
+	:param clef: Clé de Vigenere
+	:return: Message décrypté
 	'''
 	clefIndex = 0
 	clef = clef.upper()
