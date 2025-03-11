@@ -22,9 +22,28 @@ def opXor(char1, char2):
 	return result
 
 def cryptXor(message, clef):
-	pass
+	""" Chiffre un message avec la méthode XOR
+	
+	:param message: Message à crypter
+	:param clef: Clé de chiffrement
+	:return: Message crypté
+	"""
+	msgBin = [getBinaire(char) for char in message]
+	clefBin = [getBinaire(char) for char in clef]
+
+	encryptedMsg = ''
+	for i in range(len(msgBin)):
+		encryptedChar = opXor(msgBin[i], clefBin[i])
+		encryptedMsg += chr(int(encryptedChar))
+	return encryptedMsg
 
 def decryptXor(message, clef):
+	""" Déchiffre un message avec la méthode XOR
+	
+	:param message: Message à décrypter
+	:param clef: Clé de chiffrement
+	:return: Message décrypté
+	"""
 	pass
 
 def testGetBinaire():
@@ -49,3 +68,5 @@ def testDecryptXor():
 
 testGetBinaire()
 testOpXor()
+
+print(cryptXor('leci', 'abri'))
