@@ -27,6 +27,11 @@ VIGENERE = {
     'Z': {'A': 'Z', 'B': 'A', 'C': 'B', 'D': 'C', 'E': 'D', 'F': 'E', 'G': 'F', 'H': 'G', 'I': 'H', 'J': 'I', 'K': 'J', 'L': 'K', 'M': 'L', 'N': 'M', 'O': 'N', 'P': 'O', 'Q': 'P', 'R': 'Q', 'S': 'R', 'T': 'S', 'U': 'T', 'V': 'U', 'W': 'V', 'X': 'W', 'Y': 'X', 'Z': 'Y'}
 }
 
+# Affichage table Vigenère sous forme d'un tableau
+# print(' ', ' '.join(VIGENERE['A']))
+# for k, v in VIGENERE.items():
+# 	print(k, ' '.join(list(VIGENERE[k].values())))
+
 MESSAGE = "La vie est belle"
 CLEFCESAR = 5
 CLEF = "secret"
