@@ -1,3 +1,9 @@
+def expand_key(clef, desiredLength):
+	""" Assure que la clef a la taille désirée """
+	clef = clef*desiredLength
+	clef = clef[:desiredLength]
+	return clef
+
 def getBinaire(char):
 	""" Convertit un caractère en sa représentation binaire
 
@@ -28,13 +34,16 @@ def cryptXor(message, clef):
 	:param clef: Clé de chiffrement
 	:return: Message crypté
 	"""
+	# Assure que la clé et le message ont la même taille
+	clef = expand_key(clef, len(message))
+
 	msgBin = [getBinaire(char) for char in message]
 	clefBin = [getBinaire(char) for char in clef]
 
 	encryptedMsg = ''
 	for i in range(len(msgBin)):
 		encryptedChar = opXor(msgBin[i], clefBin[i])
-		encryptedMsg += chr(int(encryptedChar))
+		encryptedMsg += chr(int(encryptedChar, 2))
 	return encryptedMsg
 
 def decryptXor(message, clef):
@@ -44,7 +53,17 @@ def decryptXor(message, clef):
 	:param clef: Clé de chiffrement
 	:return: Message décrypté
 	"""
-	pass
+	# Assure que la clé et le message ont la même taille
+	clef = expand_key(clef, len(message))
+
+	msgBin = [getBinaire(char) for char in message]
+	clefBin = [getBinaire(char) for char in clef]
+
+	decryptedMsg = ''
+	for i in range(len(msgBin)):
+		decryptedChar = opXor(msgBin[i], clefBin[i])
+		decryptedMsg += chr(int(decryptedChar, 2))
+	return decryptedMsg
 
 def testGetBinaire():
 	assert(getBinaire('A') == '01000001')
@@ -60,13 +79,37 @@ def testOpXor():
 	assert(opXor('01101100', '00000000') == '01101100')
 
 def testCryptXor():
+  # Pas sur de comment tester a cause des caracteres speciaux
   pass
 
 def testDecryptXor():
-	pass
+	clef = 'abri'
+	message = 'leci'
+	messageCrypte = cryptXor(message, clef)
+	messageDecrypte = decryptXor(messageCrypte, clef)
+	assert(messageDecrypte == message)
+
+	clef = 'secret'
+	message = 'La vie est belle'
+	messageCrypte = cryptXor(message, clef)
+	messageDecrypte = decryptXor(messageCrypte, clef)
+	assert(messageDecrypte == message)
 
 
 testGetBinaire()
 testOpXor()
+testCryptXor()
+testDecryptXor()
 
-print(cryptXor('leci', 'abri'))
+
+# Driver code
+
+if __name__ == '__main__':
+	sampleString = 'La vie est belle'
+	xorKey = 'secret'
+	cipherText = cryptXor(sampleString, xorKey)
+	print(len(cipherText))
+	for c in cipherText:
+		print(f'{c} --> {ord(c)}')
+	print(f'Encrypted text: {cipherText}')
+	print(f'Decrypted text: {decryptXor(cipherText, xorKey)}')
