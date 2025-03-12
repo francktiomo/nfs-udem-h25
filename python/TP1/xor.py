@@ -37,8 +37,13 @@ def cryptXor(message, clef):
 	# Assure que la clé et le message ont la même taille
 	clef = expand_key(clef, len(message))
 
-	msgBin = [getBinaire(char) for char in message]
-	clefBin = [getBinaire(char) for char in clef]
+	msgBin = []
+	for char in message:
+		msgBin.append(getBinaire(char))
+
+	clefBin = []
+	for char in clef:
+		clefBin.append(getBinaire(char))
 
 	encryptedMsg = ''
 	for i in range(len(msgBin)):
@@ -56,8 +61,13 @@ def decryptXor(message, clef):
 	# Assure que la clé et le message ont la même taille
 	clef = expand_key(clef, len(message))
 
-	msgBin = [getBinaire(char) for char in message]
-	clefBin = [getBinaire(char) for char in clef]
+	msgBin = []
+	for char in message:
+		msgBin.append(getBinaire(char))
+
+	clefBin = []
+	for char in clef:
+		clefBin.append(getBinaire(char))
 
 	decryptedMsg = ''
 	for i in range(len(msgBin)):
